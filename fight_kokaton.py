@@ -52,6 +52,17 @@ class Bird:
             True, 
             False
         )
+        self.imgs = {
+            (+5, 0): img,  # 右
+            (+5, -5): pg.transform.rotozoom(img, 45, 1.0),  # 右上
+            (0, -5): pg.transform.rotozoom(img, 90, 1.0),  # 上
+            (-5, -5): pg.transform.rotozoom(img_0, -45, 1.0),  # 左上
+            (-5, 0): img_0,  # 左
+            (-5, +5): pg.transform.rotozoom(img_0, 45, 1.0),  # 左下
+            (0, +5): pg.transform.rotozoom(img, -90, 1.0),  # 下
+            (+5, +5): pg.transform.rotozoom(img, -45, 1.0),  # 右下
+        }
+        self.img = self.imgs[(+5, 0)]  # デフォルト：右向き
         self.rct = self.img.get_rect()
         self.rct.center = xy
 
